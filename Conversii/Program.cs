@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Conversii
 {
@@ -45,13 +41,18 @@ namespace Conversii
             Console.WriteLine($"\n-> {ConvertBase(givenNumber, currentBase, targetBase)}\n");
 
             
-            
 
             //Console.WriteLine($"{ConvertTo10("2a", 15)} correct");
             //Console.WriteLine(ConvertFrom10("40.74666667", 15));
         }
 
-
+        /// <summary>
+        /// Convert a number from its current base to a target base
+        /// </summary>
+        /// <param name="number">Number that needs to be converted</param>
+        /// <param name="currentBase">The current base</param>
+        /// <param name="targetBase">The target base</param>
+        /// <returns></returns>
         static string ConvertBase(string number, int currentBase, int targetBase)
         {
             // if the current base == target base just return the given number
@@ -69,6 +70,12 @@ namespace Conversii
             }
         }
 
+        /// <summary>
+        /// Convert a number form any base to base 10
+        /// </summary>
+        /// <param name="number">Number that needs to be converted</param>
+        /// <param name="currentBase">The current base</param>
+        /// <returns></returns>
         static string ConvertTo10(string number, int currentBase)
         {
             float result = 0f;
@@ -121,6 +128,12 @@ namespace Conversii
         }
 
         // TODO detect repeating decimal numbers
+        /// <summary>
+        /// Convert a number from base 10 to any base
+        /// </summary>
+        /// <param name="number">Number that needs to be converted</param>
+        /// <param name="targetBase">The target base</param>
+        /// <returns></returns>
         static string ConvertFrom10(string number, int targetBase)
         {
             int mostDecimals = 10;
