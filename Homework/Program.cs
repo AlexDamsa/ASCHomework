@@ -13,7 +13,7 @@ namespace Homework
             uint processingPower;
             float time;
             string response;
-
+            
             do // programul se repeta daca utilizatorul vrea sa faca asta
             {
                 Console.WriteLine("Conform legii lui Gordon Moore, puterea de calcul a unui procesor se dubleaza la fiecare 18 luni");
