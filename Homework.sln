@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MooresLaw", "Homework\Moore
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conversii", "Conversii\Conversii.csproj", "{F6976209-112D-4A8D-BED6-D6474AE16968}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Automat de vanzari", "Automat de vanzari\Automat de vanzari.csproj", "{A99AA0AD-300F-47BD-8A84-86157B054672}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{F6976209-112D-4A8D-BED6-D6474AE16968}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F6976209-112D-4A8D-BED6-D6474AE16968}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F6976209-112D-4A8D-BED6-D6474AE16968}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A99AA0AD-300F-47BD-8A84-86157B054672}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A99AA0AD-300F-47BD-8A84-86157B054672}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A99AA0AD-300F-47BD-8A84-86157B054672}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A99AA0AD-300F-47BD-8A84-86157B054672}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
