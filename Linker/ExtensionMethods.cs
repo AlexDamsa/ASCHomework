@@ -9,11 +9,20 @@ namespace Linker
 {
     public static class ExtensionMethods
     {
+        public static void WriteAllData(this List<Module> list)
+        {
+            foreach (Module x in list)
+            {
+                x.WriteAllData();
+                Console.WriteLine();
+            }
+        }
+
         /// <summary>
         /// Writes in console all modules in the list
         /// </summary>
         /// <param name="list"></param>
-        public static void WriteAllModules(this List<Module> list)
+        public static void WriteModules(this List<Module> list)
         {
             foreach (Module x in list)
             {

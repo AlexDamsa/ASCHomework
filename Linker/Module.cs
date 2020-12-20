@@ -16,7 +16,42 @@ namespace Linker
 
         public List<int> words;
 
-        
+        public void WriteAllData()
+        {
+            Console.WriteLine($"base address = {baseAddress}");
+
+            Console.WriteLine();
+
+            Console.WriteLine($"Symbols = {symbols.Count}");
+            foreach (Symbol x in symbols)
+            {
+                Console.WriteLine($"name = {x.Name}");
+                Console.WriteLine($"relative address = {x.RelativeAdress}");
+                Console.WriteLine($"absolute address = {x.absoluteAddress}");
+                Console.WriteLine($"---------------------");
+            }
+
+            Console.WriteLine();
+
+            Console.WriteLine($"Using list = {usingList.Count}");
+            for (int i = 0; i < usingList.Count; i++)
+            {
+                Console.WriteLine($"key = {usingList.ElementAt(i).Key}");
+                Console.WriteLine($"value = {usingList.ElementAt(i).Value}");
+                Console.WriteLine($"---------------------");
+            }
+
+            Console.WriteLine();
+
+            Console.WriteLine($"Words = {words.Count}");
+            foreach (int x in words)
+            {
+                Console.WriteLine($"{x} ");
+            }
+            Console.WriteLine();
+            Console.WriteLine($"================================");
+
+        }
         public void WriteModule()
         {
             if (symbols.Count != null)

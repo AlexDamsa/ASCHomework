@@ -17,7 +17,9 @@ namespace Linker
             FirstStep();
             
 
-            modules.WriteAllModules();
+            //modules.WriteAllModules();
+
+            modules.WriteAllData();
         }
 
 
@@ -56,6 +58,21 @@ namespace Linker
                     {
                         modules[i].words.Add(int.Parse(text[j]));
                     }
+                }
+            }
+
+            modules[0].baseAddress = 0;
+            foreach (Symbol x in modules[0].symbols)
+            {
+                x.absoluteAddress = x.RelativeAdress;
+            }
+            for (int i = 1; i < modules.Count; i++)
+            {
+                modules[i].baseAddress = modules[i - 1].baseAddress + modules[i - 1].words.Count;
+
+                foreach (Symbol x in modules[i].symbols)
+                {
+                    x.absoluteAddress = x.RelativeAdress + modules[i].baseAddress;
                 }
             }
         }
