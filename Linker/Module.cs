@@ -8,6 +8,10 @@ namespace Linker
 {
     public class Module
     {
+        static Dictionary<int, int> memoryMap = new Dictionary<int, int>();
+        public static Dictionary<int, int> MemoriMap { get { return memoryMap; } set { memoryMap = value; } }
+
+
         public int baseAddress;
 
         public List<Symbol> symbols;
@@ -15,6 +19,7 @@ namespace Linker
         public Dictionary<Symbol, int> usingList;
 
         public List<int> words;
+
 
         public void WriteAllData()
         {
@@ -107,6 +112,94 @@ namespace Linker
             }
 
             Console.WriteLine();
+        }
+
+        public static void WriteSymbolTable()
+        {
+            Console.WriteLine("Symbol Table");
+            
+            foreach (Module x in Program.modules)
+            {
+                foreach (Symbol y in x.symbols)
+                {
+                    Console.WriteLine($"{y.Name}={y.absoluteAddress}");
+                }
+            }
+        }
+        public static void WriteMemoryMap()
+        {
+            Console.WriteLine("Memory Map");
+
+            
+            for (int i = 0; i < memoryMap.Count; i++)
+            {
+                Console.WriteLine($"{memoryMap.ElementAt(i).Key}: {memoryMap.ElementAt(i).Value.ToString().PadLeft(MaxLength() - Currentlenght(memoryMap.ElementAt(i).Key) + 4, ' ')}");
+
+            }
+
+            int MaxLength()
+            {
+                int length = 0;
+                int maxKey = memoryMap.ElementAt(memoryMap.Count - 1).Key;
+
+                if (maxKey == 0)
+                {
+                    return 1;
+                }
+
+                while (maxKey != 0)
+                {
+                    length++;
+                    maxKey /= 10;
+                }
+
+                return length;
+            }
+            int Currentlenght(int currentKey)
+            {
+                if(currentKey == 0)
+                {
+                    return 1;
+                }
+
+                int length = 0;
+
+                while (currentKey != 0)
+                {
+                    length++;
+                    currentKey /= 10;
+                }
+
+                return length++;
+            }
+        }
+        
+
+        public Symbol CompareUses(int word)
+        {
+            int index;
+            for (int i = 0; i < usingList.Count; i++)
+            {
+                index = usingList.ElementAt(i).Value;
+
+                do
+                {
+                    if (words[index] == word)
+                    {
+                        return usingList.ElementAt(i).Key;
+                    }
+
+                    index = (words[index] / 10) % 1000;
+
+                } while ((words[index] / 10) % 1000 != 777);
+
+                if (words[index] == word)
+                {
+                    return usingList.ElementAt(i).Key;
+                }
+            }
+
+            return null;
         }
 
 

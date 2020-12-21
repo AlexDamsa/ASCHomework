@@ -9,6 +9,22 @@ namespace Linker
 {
     public static class ExtensionMethods
     {
+        public static Symbol FindSymbolByName(this List<Module> list, string name)
+        {
+            foreach (Module x in list)
+            {
+                foreach (Symbol y in x.symbols)
+                {
+                    if (y.Name == name)
+                    {
+                        return y;
+                    }
+                }
+            }
+
+            return null;
+        }
+
         public static void WriteAllData(this List<Module> list)
         {
             foreach (Module x in list)
