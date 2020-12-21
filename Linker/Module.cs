@@ -175,25 +175,31 @@ namespace Linker
         }
         
 
-        public Symbol CompareUses(int word)
+        
+        public Symbol CompareUses(int wordIndex)
         {
             int index;
             for (int i = 0; i < usingList.Count; i++)
             {
                 index = usingList.ElementAt(i).Value;
 
-                do
+                /*do
                 {
-                    if (words[index] == word)
+
+                    index = (words[index] / 10) % 1000;
+
+                } while ((words[index] / 10) % 1000 != 777);*/
+
+                while ((words[index] / 10) % 1000 != 777)
+                {
+                    if (index == wordIndex)
                     {
                         return usingList.ElementAt(i).Key;
                     }
 
                     index = (words[index] / 10) % 1000;
-
-                } while ((words[index] / 10) % 1000 != 777);
-
-                if (words[index] == word)
+                }
+                if (index == wordIndex)
                 {
                     return usingList.ElementAt(i).Key;
                 }

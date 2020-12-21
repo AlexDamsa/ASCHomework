@@ -9,7 +9,7 @@ namespace Linker
 {
     class Program
     {
-        static StreamReader streamReader = File.OpenText("IO/input-1");
+        static string path = "IO/input-1";
         public static List<Module> modules = new List<Module>();
         
 
@@ -27,11 +27,14 @@ namespace Linker
             Module.WriteSymbolTable();
             Console.WriteLine();
             Module.WriteMemoryMap();
+
         }
 
 
         private static void FirstStep()
         {
+            StreamReader streamReader = File.OpenText(path);
+
             int numberOfModules = int.Parse(streamReader.NextLine());
 
             List<string> allUsingLists = new List<string>(); 
@@ -110,6 +113,9 @@ namespace Linker
                     }
                 }
             }
+
+
+            streamReader.Close();
         }
 
         private static void SecondStep()
@@ -162,7 +168,10 @@ namespace Linker
                     }
                     void Chase4Behaviour()
                     {
-                        Symbol symbol = x.CompareUses(word);
+                        //Symbol symbol = x.CompareUses(word, i);
+                        Symbol symbol = x.CompareUses(i);
+
+                        //Console.WriteLine(symbol.Name);
 
                         if (symbol != null)
                         {
